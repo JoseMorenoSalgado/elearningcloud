@@ -1,0 +1,32 @@
+Instalar certificado de Seguridad SSL
+
+sudo apt install certbot python3-certbot-nginx
+certbot --nginx -d curso.elearningcloud.org
+
+
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): soporte@elearningcloud.org
+
+Please read the Terms of Service at https://letsencrypt.org/documents/ LE-SA-v1.2-November-15-2017.pdf. You must agree in order to register with the ACME server at https://acme-v02.api.letsencrypt.org/directory
+- - - - - - - - - - - - - - - - - - - - - - - - - - - 
+(A)gree/(C)ancel: A 
+
+Would you be willing to share your email address with the Electronic Frontier Foundation, a founding partner of the Let's Encrypt project and the non-profit organization that develops Certbot? We'd like to send you email about our work encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - 
+(Y)es/(N)o: N
+
+
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for curso.elearningcloud.org
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for new sites, or if you're confident your site works on HTTPS. You can undo this change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2   
+
+Congratulations! You have successfully enabled https://curso.elearningcloud.org
+
+renovar certificado de seguridad SSL 
+cerbot renew     
