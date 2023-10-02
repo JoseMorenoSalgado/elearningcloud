@@ -1,0 +1,39 @@
+Crear un nuevo usuario con privilegios
+
+Adduser nombredeusuario
+
+Verificar si el usuario se creó.
+
+ cd  /home
+
+Enlistar.   ll
+
+Asignar permisos a nuestro usuario creado.
+
+usermod -aG sudo nombredeusuario
+
+utilizando nuestro usuario
+
+su nombredeusuario
+
+Verificar el directorio del usuario
+
+whoami
+#########################################################
+Cambiar puerto 22.
+
+Acceder al directorio ssh.
+
+cd /etc/ssh
+
+entrar al ar archivo de configuración de ssh y cambiar el puerto 22
+
+sudo nano /etc/ssh/sshd_config
+
+reiniciar ssh.
+
+sudo systemctl reload sshd
+
+entrar nuevamente por el nuevo puerto desde la terminal o puty
+
+ssh -p33172 taller@ip_servidor.
