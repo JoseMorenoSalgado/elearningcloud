@@ -1,0 +1,67 @@
+1. Actualizar y instar repositorios.
+
+sudo apt update
+sudo apt install phpmyadmin
+
+2. Durante la instalación, le preguntará si desea utilizar dbconfig-commonpara configurar la base de datos. Presione la tecla Tab para seleccionar Sí.
+
+3. Esto también creará un nuevo usuario de base de datos llamado phpmyadmin. Dale a este usuario una contraseña.
+
+4.  Nginx no está en la lista, así que presione la tecla Tabulador y presione Aceptar para omitir este paso.
+
+5. Entrara como usuario root 
+
+sudo mysql -u root
+
+6. Verificar privilegio 
+show grants for phpmyadmin@localhost;
+exit;
+
+7. Crear bloque de servidor Nginx para phpMyAdmin
+
+sudo nano /etc/nginx/conf.d/phpmyadmin.conf
+
+
+8. Agregar las isguientes lineas cambiando el servidor de nombre el un subdominio
+
+###############################################################################################
+
+server {
+  listen 80;
+  listen [::]:80;
+  server_name bd.example.com;
+  root /usr/share/phpmyadmin/;
+  index index.php index.html index.htm index.nginx-debian.html;
+
+  access_log /var/log/nginx/phpmyadmin_access.log;
+  error_log /var/log/nginx/phpmyadmin_error.log;
+
+  location / {
+    try_files $uri $uri/ /index.php;
+  }
+
+  location ~ ^/(doc|sql|setup)/ {
+    deny all;
+  }
+
+  location ~ \.php$ {
+    fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+    include snippets/fastcgi-php.conf;
+  }
+
+  location ~ /\.ht {
+    deny all;
+  }
+}
+
+############################################################################################
+
+
+9. Revisar si esta bien escrito el codigo.
+sudo nginx -t
+
+10. Reiniciar Nginx.
+sudo systemctl reload nginx
+
