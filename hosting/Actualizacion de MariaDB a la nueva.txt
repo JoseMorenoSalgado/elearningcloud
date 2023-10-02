@@ -1,0 +1,48 @@
+Actualización de MariaDB a la nueva versión
+
+Comprueba qué versión de MariaDB está instalada en su servidor
+rpm -qa|grep -i maria
+
+Cambios en el repositorio de MariaDB
+editar: /etc/yum.repos.d/mariadb.repo
+
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.2/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+
+Modifica 10.2 con la versión que deseas actualizar
+Ejemplo de actualización a MariaDB 10.6
+
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.6/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+Detenga y elimine la versión anterior de MariaDB (las bases de datos no se eliminarán)
+
+service mysql stop
+service mariadb stop
+systemctl disable mariadb
+rpm --nodeps -ev MariaDB-server
+
+Instalar la nueva versión de MariaDB
+
+yum clean all
+yum -y update "MariaDB-*"
+yum -y install MariaDB-server
+systemctl enable mariadb
+service mariadb start
+mysql_upgrade
+
+Verifique la configuración personalizada
+diff -Bw /etc/my.cnf.d/server.cnf.rpmsave /etc/my.cnf.d/server.cnf
+
+Verificar paquetes actualizados
+rpm -qa|grep -i maria
+
+
+
