@@ -1,0 +1,30 @@
+update server 
+ yum update
+yum upgrade
+
+cambiar hostname
+hostname srv1.example.com
+
+1. Preparando el servidor
+
+paquetes necesarios para la instalación de CWP
+yum -y install wget
+
+
+CentOS 8, Alma Linux y Rocky Linux : es posible que necesites instalar el repositorio EPEL para poder instalar herramientas como wget:
+
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install wget -y
+
+update.
+
+yum -y update
+
+Reiniciar Server 
+reboot
+
+Instalador para CentOS 8 , Alma Linux y Rocky Linux
+cd /usr/local/src
+wget http://centos-webpanel.com/cwp-el8-latest
+sh cwp-el8-latest
+
