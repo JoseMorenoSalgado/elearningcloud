@@ -1,0 +1,45 @@
+Configurar corta fuego.
+
+sudo ufw status verbose
+
+habilitar el Puerto en el cortafuego
+
+sudo ufw allow 33172/tcp
+
+sudo ufw allow 22/tcp
+
+ 
+
+Cerrar un puerto
+
+sudo ufw deny 22/tcp
+
+ Ver cuantas aplicaciones tenemos registradas
+
+sudo ufw app list
+
+obtener más información y ver los puertos.
+
+sudo ufw app info
+
+Negar conexiones reiteradas por ssh en los últimos 30 segundo
+
+ sudo ufw limit OpenSSH comment 'Inicio de sesion bloqueado'
+
+verificar
+
+sudo ufw status verbose
+
+Mostrar los sitios web
+
+Abrir conexión de nginx
+
+sudo ufw app info "Nginx HTTPS"
+
+Agregarlo a las reglas del cortafuego
+
+sudo ufw allow "Nginx HTTP"
+
+Confirmar que se agregó la regla.
+
+sudo ufw status verbose
