@@ -1,0 +1,21 @@
+instalar servidor nginx 
+
+Comandos.
+Actualizar paquetes
+apt update
+apt upgrade.
+
+1. servidor web 
+apt install nginx
+
+2. verificaciones de nginx
+ nginx -t 
+3. verificar estado de nginx 
+systemctl status nginx 
+
+4. reiniciar nginx.
+systemctl restart nginx.
+
+identificar directorio de nginx en ubuntu server 
+cd /etc/nginx
+
