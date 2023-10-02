@@ -1,0 +1,60 @@
+Descargar Moodle y configurar moodle 
+
+wget https://download.moodle.org/download.php/direct/stable402/moodle-latest-402.tgz
+
+tar -zxvf mood..
+······································································
+
+
+Crear los directorios y mover la carpeta de Moodle descomprimida.
+
+mkdir -p /var/www/taller/data
+
+mv moodle /var/www/taller/web
+
+chown -R www-data:www-data /var/www/aula
+
+chmod -R 755 /var/www/aula
+
+Acceder al directorio siguiente y revisar nuestro archivo de Moodle que movimos.
+
+ cd /var/www/
+
+
+..................................................................................
+Configurar Nginx.
+Accediendo al directorio .conf de nginx.
+
+cd /etc/nginx/conf.d
+nano curso.elearningcloud.org.conf
+
+
+
+**********************************************
+server {
+    listen 80;
+    server_name curso.elearningcloud.org;
+    root /var/www/aula/web;
+    index index.php index.html index.htm;
+ 
+    location / {
+    	try_files $uri $uri/ /index.php?$query_string;       
+    }
+ 
+    location /dataroot/ {
+    	internal;
+    	alias /var/www/aula/data;
+    }
+ 
+    location ~ [^/]\.php(/|$) {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+ 
+}	
+
+nginx -t
+systemctl restart nginx	
+systemctl status nginx	
