@@ -1,0 +1,13 @@
+backups base dedatos
+
+mysqldump -u root basededatoarespaldar > /var/www/nombrequeasignaremos.sql
+
+
+importar base de datos.
+mysql -p basededacreada < basededatoaimportar.sql
+
+································
+backups a otro server
+sudo rsync -av -e ssh data/ root@207.244.246.160:/home/gticapac/public_html
+
+sudo rsync -av -e ssh mail/ root@194.163.182.175:/home/ecloud/public_html
