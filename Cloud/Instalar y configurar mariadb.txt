@@ -1,0 +1,71 @@
+Instalar mariabd.
+
+
+apt install mariadb-server -y
+
+
+Revisar versión de base de dato.
+
+
+sudo mysql --version
+
+
+Instalar seguridad mariadb.
+
+mysql_secure_installation
+
+
+Configuracion de seguridad mariadb.
+
+Enter current password for root (enter for none): ENTER
+
+Set root password? [Y/n] y
+
+Remove anonymous users? [Y/n] y
+
+Disallow root login remotely? [Y/n] y
+
+Remove test database and access to it? [Y/n] y
+
+Reload privilege tables now? [Y/n] y
+
+************************************************************************
+Configurar MariaDB.
+
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+Agregar las siguientes líneas como se observa en la imagen.
+
+default_storage_engine = innodb
+
+innodb_file_per_table = 1
+
+innodb_file_format = Barracuda
+
+innodb_large_prefix = 1
+
+
+sudo systemctl restart mariadb
+
+sudo systemctl status mariadb
+··················································································
+
+
+Ingresar al servidor de mysql.
+sudo mysql -u root -p
+
+Ingresado los datos anteriores procederemos a crear nuestra base de dato.
+CREATE DATABASE CursoTic DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+Crear usuario y contraseña.
+CREATE USER 'CursoTic'@'localhost' IDENTIFIED BY 'MypasswordTaller2021';
+
+Asignar todos los privilegios de nuestro usuario creado a la base de dato. 
+GRANT ALL PRIVILEGES ON CursoTic.* TO 'CursoTic'@'localhost';
+
+ Para finalizar.
+FLUSH PRIVILEGES;
+
+exit
+······································································
+
