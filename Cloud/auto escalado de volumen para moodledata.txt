@@ -1,0 +1,20 @@
+Para configurar su volumen, utilice los siguientes comandos en su servidor (como usuario privilegiado
+
+
+1. revisar los volumenes
+df -h
+
+2. crear un directorio sobre mnt
+mkdir /mnt/moodledata
+
+3. identificar el volument con df -h en este caso es HC_Volume_37800650
+
+montar el volumen HC_Volume_37800650 sobre el direcctorio moodledata 
+
+mount -o discard,defaults /dev/disk/by-id/scsi-0HC_Volume_37800650 /mnt/moodledata
+
+4. montar el volumen cada ves que se reincie el servidor 
+sudo nano /etc/fstab
+
+5.  escribir en la ultima linea.
+/dev/disk/by-id/scsi-0HC_Volume_37800650 /mnt/moodledata ext4 discard,nofail,defaults 0 0
