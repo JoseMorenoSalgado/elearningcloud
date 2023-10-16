@@ -1,0 +1,51 @@
+instalar extenxion redeis.
+sudo apt install php7.4-redis
+instalar redis.
+sudo apt install redis-server
+
+cambie (supervised no) por (supervised systemd)
+
+reinicie rdis.
+sudo systemctl restart redis.service
+
+probar redis
+sudo systemctl status redis
+-----------------------------------------------------------------------------------------
+Paso 3: Enlace a localhost
+sudo nano /etc/redis/redis.conf
+descomentar  bind 127.0.0.1 ::1
+
+reinciar redis 
+sudo systemctl restart redis
+-----------------------------------------------------------------------------------------------
+Paso 4: Configurar una contraseña de Redis
+
+sudo nano /etc/redis/redis.conf
+decomentar y agregar paswword.
+# requirepass foobared
+
+Denerar un paswoword.
+openssl rand 60 | openssl base64 -A
+
+En requirepass foobared reemplazar (foobared ) por el pasword generado.
+ejemplo-- requirepass RBOJ9cCNoGCKhlEBwQLHri1g+atWgn4Xn4HwNUbtzoVxAYxkiYBi7aufl4MILv1nxBqR4L6NNzI0X6cE
+
+probar si la contraseña funciona.
+redis-cli
+auth TU_redis_password
+set key1 10
+consulta a Redis el valor de la nueva clave
+get key1
+SALIR 
+quit
+
+CONFIGURACION EN MOODLE.
+
+tudominio.com/admin/settings.php?section=cachestore_redis_settings
+en Servidor de pruebas escribir ---127.0.0.1:6379---
+Probar contraseña de servidor--- escribir el paswword agregado en requirepass de redis
+
+probar si funciona en moodle.
+tudominio.com/cache/testperformance.php
+
+
