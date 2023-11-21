@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Acordeón Bootstrap</title>
+  <!-- Agrega los enlaces a los estilos de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Puedes personalizar el estilo añadiendo tu propia hoja de estilos aquí -->
+  <style>
+    /* Personaliza el color del título del acordeón */
+    .accordion-header {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="accordion" id="moduleAccordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link accordion-header" type="button" data-toggle="collapse" data-target="#collapseGeneral" aria-expanded="true" aria-controls="collapseGeneral">
+            Objetivo General
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseGeneral" class="collapse" aria-labelledby="headingOne" data-parent="#moduleAccordion">
+        <div class="card-body">
+          <!-- Objetivo general del módulo -->
+          <p>El objetivo general de este módulo es proporcionar una comprensión integral de los principios fundamentales relacionados con la obtención y manejo de muestras microbiológicas, así como desarrollar habilidades prácticas para realizar análisis microbiológicos con precisión.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link accordion-header" type="button" data-toggle="collapse" data-target="#collapseSpecific" aria-expanded="false" aria-controls="collapseSpecific">
+            Objetivo Específico
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseSpecific" class="collapse" aria-labelledby="headingTwo" data-parent="#moduleAccordion">
+        <div class="card-body">
+          <!-- Objetivo específico del módulo -->
+          <p>1. Adquirir conocimientos detallados sobre las técnicas de obtención de muestras microbiológicas en diversos entornos.</p>
+          <p>2. Desarrollar habilidades prácticas en el manejo adecuado de muestras microbiológicas, incluyendo el almacenamiento y transporte.</p>
+          <p>3. Comprender los protocolos de seguridad asociados con la manipulación de muestras microbiológicas.</p>
+          <!-- Puedes agregar más objetivos específicos según sea necesario. -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Agrega los enlaces a los scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
