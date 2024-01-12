@@ -1,0 +1,17 @@
+descargar Pluying 
+https://moodle.org/plugins/mod_securepdf
+
+instalar ImageMagick 
+sudo apt install imagemagick php8.2-Imagick
+
+editar la linea 
+<policy domain="coder" rights="read | write" pattern="PDF" />
+nano /etc/ImageMagick-6/policy.xml
+
+reiniciar php
+systemctl restart php8.2-fpm
+
+ habilitar cron en Moodle 
+crontab -u www-data -e
+
+* * * * *  /usr/bin/php8.2  /var/www/moodle/web/admin/cli/cron.php >/dev/null
