@@ -2,17 +2,17 @@ instalar  y configurar php-fpm
 
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
-sudo apt install php8.0 php8.0-{fpm,common,mbstring,xmlrpc,soap,gd,xml,intl,mysql,cli,mcrypt,ldap,zip,curl}
+sudo apt install php8.2 php8.2-{fpm,common,mbstring,xmlrpc,soap,gd,xml,intl,mysql,cli,mcrypt,ldap,zip,curl}
 
 
-
+entrar a editar nano /etc/php/8.2/fpm/php.ini	
 Cambie los siguientes datos.
 
 memory_limit = 256M
 
-upload_max_filesize = 64M
+upload_max_filesize = 300M
 
-post_max_size = 64M
+post_max_size = 300M
 
 max_execution_time = 360
 
