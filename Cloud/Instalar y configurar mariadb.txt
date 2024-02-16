@@ -55,13 +55,13 @@ Ingresar al servidor de mysql.
 sudo mysql -u root -p
 
 Ingresado los datos anteriores procederemos a crear nuestra base de dato.
-CREATE DATABASE CursoTic DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE Nombre_de_labase_de_Dato DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 Crear usuario y contraseña.
-CREATE USER 'CursoTic'@'localhost' IDENTIFIED BY 'MypasswordTaller2021';
+CREATE USER 'usuario_de_labase_de_Dato'@'localhost' IDENTIFIED BY 'MypasswordTaller2021';
 
 Asignar todos los privilegios de nuestro usuario creado a la base de dato. 
-GRANT ALL PRIVILEGES ON CursoTic.* TO 'CursoTic'@'localhost';
+GRANT ALL PRIVILEGES ON Nombre_de_labase_de_Dato.* TO 'usuario_de_labase_de_Dato'@'localhost';
 
  Para finalizar.
 FLUSH PRIVILEGES;
