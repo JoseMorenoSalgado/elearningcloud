@@ -8,9 +8,9 @@ tar -zxvf mood..
 
 Crear los directorios y mover la carpeta de Moodle descomprimida.
 
-mkdir -p /var/www/taller/data
+mkdir -p /var/www/aula/data
 
-mv moodle /var/www/taller/web
+mv moodle /var/www/aula/web
 
 chown -R www-data:www-data /var/www/aula
 
