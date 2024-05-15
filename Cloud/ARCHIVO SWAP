@@ -1,0 +1,11 @@
+COMO CREAR ARCHIVO SWAP
+
+Crear Swap de 4G:  # sudo fallocate -l 4G /swapfile
+Revisar caracteristicas; # sudo ls -lh /swapfile
+Dar permisos al archivo creado: # sudo chmod 600 /swapfile
+Verificar instalación: #sudo ls -lh /swapfile
+Que se configure el nuevo archivo: # sudo mkswap /swapfile
+Activar archivo: # sudo swapon /swapfile
+Verificar todo: # sudo swapon -s
+Editar el archivo para que sea permanente: # sudo nano  /etc/fstab
+Linea que se debe agregar al final: /swapfile       none    swap    sw      0       0
