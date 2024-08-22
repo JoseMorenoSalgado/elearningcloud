@@ -1,0 +1,95 @@
+Asignar la cantidad inicial que necesita para el volumen si es para cpanel con wordpres ext4 si es para moodle nfs
+
+1. Nombramos el nombre de volumen antes de en nuestro caso home.
+
+
+2. Al asignar el volumen en automatico nos aprece de la siguien forma.
+
+mkfs.ext4 -F  /dev/disk/by-id/scsi-0HC_Volume_101204122
+mkdir /mnt/home
+mount -o discard,defaults /dev/disk/by-id/scsi-0HC_Volume_101204122 /mnt/home
+echo "/dev/disk/by-id/scsi-0HC_Volume_101204122 /mnt/home ext4 discard,nofail,defaults 0 0" >> /etc/fstab
+
+
+1. revisar los volumenes
+df -h
+
+2.crear un directorio sobre mnt
+mkdir /mnt/home
+
+3. montar sobre le nuevo directorioque se encuentra en mt.
+
+mount -o discard,defaults /dev/disk/by-id/scsi-0HC_Volume_101204122 /mnt/home
+
+4.montar el volumen cada ves que se reincie el servidor.
+sudo nano /etc/fstab
+
+5. pegamos las isguiente linea.
+
+/dev/disk/by-id/scsi-0HC_Volume_101204122 /mnt/home ext4 discard,nofail,defaults 0 0
+
+6.Después de editar el archivo fstab, puedes montar todos los sistemas de archivos especificados allí usando el siguiente comando:
+sudo mount -a
+
+
+*************************************************
+Pasar el directorio home de cpanel.
+
+
+1. Detén los servicios de cPanel:
+Antes de mover los datos, es importante detener todos los servicios relacionados con cPanel para evitar cualquier corrupción de datos durante la transferencia.
+
+sudo systemctl stop cpanel
+sudo systemctl stop httpd
+sudo systemctl stop mysqld
+
+
+2. Copia los datos de cPanel a la nueva partición:
+Suponiendo que los datos de cPanel se encuentran en /home, utiliza rsync para copiar todos los datos a la nueva partición montada en /mnt/home:
+sudo rsync -avz /home/ /mnt/home/
+
+Este comando copiará todos los archivos y carpetas de /home a /mnt/home, preservando los permisos, fechas y otros atributos.
+
+3. Verifica la copia:
+Es recomendable verificar que todos los datos se hayan copiado correctamente antes de proceder:
+sudo diff -r /home /mnt/home
+
+
+ 4. Actualiza el archivo /etc/fstab:
+Como ya has añadido la línea para montar la nueva partición en /mnt/home, debes modificar este archivo para que la nueva partición se monte en /home en lugar de /mnt/home.
+
+sudo nano /etc/fstab
+/dev/disk/by-id/scsi-0HC_Volume_101204122 /mnt/home ext4 discard,nofail,defaults 0 0
+
+a
+/dev/disk/by-id/scsi-0HC_Volume_101204122 /home ext4 discard,nofail,defaults 0 0
+
+
+5. Renombra la carpeta /home original y monta la nueva partición:
+Renombra el directorio /home actual por seguridad:
+sudo mv /home /home.bak
+
+6.Crea un nuevo directorio /home vacío:
+sudo mkdir /home
+
+7. Monta la nueva partición:
+
+sudo mount -a
+
+
+ Reinicia los servicios de cPanel:
+Finalmente, vuelve a iniciar los servicios de cPanel para que todo funcione desde la nueva ubicación:
+sudo systemctl start cpanel
+sudo systemctl start httpd
+sudo systemctl start mysqld
+
+
+Verifica que todo funcione correctamente:
+Asegúrate de que cPanel esté funcionando correctamente después de la migración. Si todo está bien, puedes eliminar el directorio /home.bak para liberar espacio:
+sudo rm -rf /home.bak
+
+1. Verificar la capacidad del disco desde cPanel:
+disco>uso de disco
+
+
+
