@@ -92,4 +92,27 @@ sudo rm -rf /home.bak
 disco>uso de disco
 
 
+******************************************************
+gregar mas almacenamiento al disco.
+
+Pasos para redimensionar el sistema de archivos en un disco sin particiones:
+
+Verifica el tamaño actual del disco:
+
+Asegúrate de que el disco muestra el tamaño correcto:
+
+sudo lsblk -o NAME,SIZE,MOUNTPOINT
+
+Redimensiona el sistema de archivos:
+Dado que el disco no tiene particiones y está directamente formateado, usa el siguiente comando para redimensionar el sistema de archivos:
+sudo resize2fs /dev/sdb
+Este comando ajustará el sistema de archivos ext4 para usar todo el espacio disponible en el disco.
+
+
+Verifica el espacio disponible:
+
+Después de redimensionar el sistema de archivos, verifica el espacio disponible en el punto de montaje:
+df -h /home
+Esto debería mostrar el espacio total disponible en el disco montado en /home.
+
 
