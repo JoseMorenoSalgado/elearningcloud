@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * 
+ Crea un archivo de hook llamado custom_registration_protection.php en el directorio includes/hooks/.
+este codigo mitiga los bot
+ */
+
 if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
