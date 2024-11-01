@@ -1,0 +1,20 @@
+.alert-dismissible {display:none;}
+
+#page-loader-wrapper {
+
+display: none !important;
+
+}
+
+.btn-floating-text {
+    display: none;
+}
+
+.floating-buttons-wrapper {
+    display: none;
+}
+
+body#page-site-index
+div#CarouselCaptions {
+display: none;
+}
