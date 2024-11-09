@@ -1,6 +1,14 @@
-En lo siguien se aplica el cron para moodle haciendo uso del cwp7
-Ubicarme en el cron del usuario del panel 
-ingresar las siguientes lineas por usuario asiganado, este usuario es del panel no de moodle.
+Configuración del Cron para Moodle usando CWP7
 
-remplaza aquituusuario
+Este proceso explica cómo configurar el cron de Moodle en el panel de control CWP7. Ten en cuenta que el cron se establece en el cron del usuario del panel, no en el usuario de Moodle.
+
+Instrucciones
+
+1. Ubica el cron del usuario en el panel de CWP7.
+
+
+2. Agrega la siguiente línea en el cron, reemplazando aquituusuario con el nombre de usuario asignado en el panel:
+
 /usr/local/bin/php /home/aquituusuario/public_html/admin/cli/cron.php
+
+Este comando ejecutará el cron de Moodle utilizando la ruta de PHP definida en CWP7.
