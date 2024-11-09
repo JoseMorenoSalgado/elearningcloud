@@ -1,0 +1,6 @@
+En lo siguien se aplica el cron para moodle haciendo uso del cwp7
+Ubicarme en el cron del usuario del panel 
+ingresar las siguientes lineas por usuario asiganado, este usuario es del panel no de moodle.
+
+remplaza aquituusuario
+/usr/local/bin/php /home/aquituusuario/public_html/admin/cli/cron.php
