@@ -25,6 +25,6 @@ Cambie el valor de (1000) max_input_vars = 1000 por (5000) quedando como lo sigu
 
 max_input_vars = 5000
 
-systemctl status php8.0-fpm
+systemctl status php8.2-fpm
 
-systemctl restart php8.0-fpm
+systemctl restart php8.2-fpm
